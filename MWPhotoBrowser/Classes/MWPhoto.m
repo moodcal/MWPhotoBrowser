@@ -20,7 +20,6 @@
 }
 
 // Properties
-@property (nonatomic, strong) UIImage *underlyingImage; // holds the decompressed image
 
 // Methods
 - (void)decompressImageAndFinishLoading;

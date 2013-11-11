@@ -108,7 +108,6 @@
 
 // Data
 - (NSUInteger)numberOfPhotos;
-- (id<MWPhoto>)photoAtIndex:(NSUInteger)index;
 - (UIImage *)imageForPhoto:(id<MWPhoto>)photo;
 - (void)loadAdjacentPhotosIfNecessary:(id<MWPhoto>)photo;
 - (void)releaseAllUnderlyingPhotos:(BOOL)preserveCurrent;
@@ -319,7 +318,7 @@
     }
     
     // Show action button on nav if we can
-    BOOL actionButtonOnNavBar = !self.navigationItem.rightBarButtonItem;
+    BOOL actionButtonOnNavBar = !self.navigationItem.rightBarButtonItem || self.navigationItem.rightBarButtonItem == _actionButton;
     if (_actionButton && actionButtonOnNavBar) {
         self.navigationItem.rightBarButtonItem = _actionButton;
     }
@@ -966,8 +965,9 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self hideControlsAfterDelay];
 	// Hide controls when dragging begins
-	[self setControlsHidden:YES animated:YES permanent:NO];
+//	[self setControlsHidden:YES animated:YES permanent:NO];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

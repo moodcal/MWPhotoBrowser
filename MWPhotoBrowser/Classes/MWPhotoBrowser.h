@@ -49,6 +49,8 @@
 - (id)initWithPhotos:(NSArray *)photosArray  __attribute__((deprecated("Use initWithDelegate: instead"))); // Depreciated
 - (id)initWithDelegate:(id <MWPhotoBrowserDelegate>)delegate;
 
+- (id<MWPhoto>)photoAtIndex:(NSUInteger)index;
+
 // Reloads the photo browser and refetches data
 - (void)reloadData;
 

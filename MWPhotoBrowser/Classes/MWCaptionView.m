@@ -51,6 +51,9 @@ static const CGFloat labelPadding = 10;
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
+    if (_label.text.length == 0)
+        return CGSizeZero;
+    
     CGFloat maxHeight = 9999;
     if (_label.numberOfLines > 0) maxHeight = _label.font.leading*_label.numberOfLines;
     CGSize textSize = [_label.text sizeWithFont:_label.font 
